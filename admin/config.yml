@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Main background image on the hero section" }
+
+      - name: "services"
+        label: "Service Card Images"
+        file: "_data/services.json"
+        fields:
+          - { label: "Regular Clean Image", name: "service_image_1", widget: "image" }
+          - { label: "Deep Clean Image", name: "service_image_2", widget: "image" }
+          - { label: "Move-In / Out Image", name: "service_image_3", widget: "image" }
+
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "_data/testimonials.json"
+        fields:
+          - label: "Testimonial 1"
+            name: "testi_1"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+          - label: "Testimonial 2"
+            name: "testi_2"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+          - label: "Testimonial 3"
+            name: "testi_3"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+
+      - name: "contact"
+        label: "Contact Details"
+        file: "_data/contact.json"
+        fields:
+          - { label: "Phone Number", name: "phone", widget: "string", hint: "e.g. 0917 123 4567" }
+          - { label: "Business Hours", name: "hours", widget: "string", hint: "e.g. Mon–Sat · 7AM–5PM" }
+          - { label: "Address", name: "address", widget: "string", hint: "e.g. Quezon City, Metro Manila" }

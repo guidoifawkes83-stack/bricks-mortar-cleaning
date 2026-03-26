@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bricks & Mortar Cleaning Co. | Professional Home Cleaning in Quezon City</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #1b3e83;
+    --navy-dark: #0f2552;
+    --navy-mid: #37569c;
+    --teal: #0c6780;
+    --teal-light: #e0f4f8;
+    --teal-mid: #9ae1ff;
+    --surface: #f7f9fb;
+    --surface-low: #f2f4f6;
+    --surface-container: #eceef0;
+    --white: #ffffff;
+    --text: #191c1e;
+    --text-soft: #424752;
+    --border: #e0e3e5;
+    --gray: #727784;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); overflow-x: hidden; }
+  h1,h2,h3,h4,h5 { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; text-decoration: none; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { color: var(--text-soft); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; position: relative; padding-bottom: 2px; }
+  .nav-links a.active { color: var(--navy); font-weight: 600; }
+  .nav-links a.active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--navy); border-radius: 2px; }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta { padding: 0.6rem 1.5rem; background: var(--navy); color: white; border-radius: 100px; font-weight: 700; font-size: 0.875rem; text-decoration: none; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif; border: none; cursor: pointer; }
+  .nav-cta:hover { background: var(--navy-dark); transform: translateY(-1px); box-shadow: 0 4px 15px rgba(27,62,131,0.3); }
+
+  /* HERO */
+  .hero { min-height: calc(100vh - 65px); margin-top: 65px; display: flex; align-items: center; background: var(--surface); overflow: hidden; }
+  .hero-inner { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: 7fr 5fr; gap: 4rem; align-items: center; }
+  .hero-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; background: var(--teal-light); color: var(--teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero-headline { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 800; color: var(--text); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .hero-headline .accent { color: var(--navy); }
+  .hero-sub { font-size: 1.05rem; color: var(--text-soft); line-height: 1.75; max-width: 520px; margin-bottom: 2.5rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary { padding: 1rem 2rem; background: var(--navy); color: white; border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .btn-primary:hover { background: var(--navy-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(27,62,131,0.25); }
+  .btn-secondary { padding: 1rem 2rem; background: var(--surface-low); color: var(--navy); border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .btn-secondary:hover { background: var(--surface-container); }
+
+  /* HERO STATS */
+  .hero-stats { display: flex; gap: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--navy); }
+  .stat-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 0.15rem; }
+
+  /* HERO IMAGE */
+  .hero-image-wrap { position: relative; }
+  .hero-image-card { border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 80px rgba(27,62,131,0.15); aspect-ratio: 4/5; transform: translateX(1.5rem); }
+  .hero-image-card img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-image-badge {
+    position: absolute; bottom: 2rem; left: 0; right: 3rem;
+    padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(20px); border-radius: 1.25rem;
+    border: 1px solid rgba(255,255,255,0.5);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-image-badge-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(27,62,131,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .hero-image-badge-icon .material-symbols-outlined { color: var(--navy); }
+  .hero-image-badge-text strong { display: block; font-weight: 700; color: var(--navy); font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .hero-image-badge-text span { font-size: 0.78rem; color: var(--text-soft); }
+  .hero-bg-blob { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: rgba(27,62,131,0.06); top: -60px; right: -60px; z-index: -1; filter: blur(40px); }
+
+  /* TRUST BADGES */
+  .trust { padding: 2.5rem 2rem; background: var(--surface-low); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .trust-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem 4rem; opacity: 0.55; filter: grayscale(1); transition: all 0.3s; }
+  .trust-inner:hover { opacity: 0.85; filter: grayscale(0); }
+  .trust-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-soft); font-style: italic; }
+  .trust-item .material-symbols-outlined { color: var(--navy); font-size: 1.1rem; }
+
+  /* SERVICES */
+  .services { padding: 6rem 2rem; background: var(--surface); }
+  .services-inner { max-width: 1280px; margin: 0 auto; }
+  .section-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; color: var(--text); margin-bottom: 0.75rem; }
+  .section-sub { color: var(--text-soft); font-size: 1rem; line-height: 1.7; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card { background: var(--surface-low); border-radius: 2rem; padding: 1rem; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); cursor: pointer; }
+  .service-card:hover { background: white; box-shadow: 0 20px 60px rgba(27,62,131,0.08); transform: translateY(-4px); }
+  .service-card-img { border-radius: 1.5rem; overflow: hidden; aspect-ratio: 1/1; margin-bottom: 1.5rem; }
+  .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .service-card:hover .service-card-img img { transform: scale(1.04); }
+  .service-card-body { padding: 0.5rem 0.5rem 0.75rem; }
+  .service-card-name { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 0.6rem; }
+  .service-card-desc { color: var(--text-soft); font-size: 0.875rem; line-height: 1.65; margin-bottom: 1.25rem; }
+  .service-card-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--navy); font-weight: 700; font-size: 0.875rem; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif; transition: gap 0.2s; }
+  .service-card-link:hover { gap: 0.75rem; }
+  .service-card-link .material-symbols-outlined { font-size: 1rem; transition: transform 0.2s; }
+  .service-card:hover .service-card-link .material-symbols-outlined { transform: translateX(3px); }
+
+  /* HOW IT WORKS */
+  .how { padding: 6rem 2rem; background: var(--surface-low); }
+  .how-inner { max-width: 1280px; margin: 0 auto; }
+  .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 0; position: relative; }
+  .how-grid::before { content: ''; position: absolute; top: 2.25rem; left: calc(16.66% + 1rem); right: calc(16.66% + 1rem); height: 1px; background: linear-gradient(90deg, var(--teal-mid), var(--navy), var(--teal-mid)); opacity: 0.35; }
+  .how-step { text-align: center; padding: 2rem 1.5rem; }
+  .how-step-num { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 800; position: relative; z-index: 1; }
+  .how-step:nth-child(1) .how-step-num { background: var(--teal-light); color: var(--teal); border: 2px solid var(--teal-mid); }
+  .how-step:nth-child(2) .how-step-num { background: var(--navy); color: white; }
+  .how-step:nth-child(3) .how-step-num { background: var(--teal-light); color: var(--teal); border: 2px solid var(--teal-mid); }
+  .how-step-title { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 0.6rem; }
+  .how-step-desc { color: var(--text-soft); font-size: 0.875rem; line-height: 1.7; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 6rem 2rem; background: var(--navy); position: relative; overflow: hidden; }
+  .testimonials::before { content: ''; position: absolute; top: 0; right: 0; width: 33%; height: 100%; background: rgba(55,86,156,0.3); transform: skewX(12deg) translateX(50%); pointer-events: none; }
+  .testimonials-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .testimonials-header { margin-bottom: 3.5rem; }
+  .testimonials-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: white; margin-bottom: 0.6rem; }
+  .testimonials-header p { color: rgba(255,255,255,0.55); font-size: 1rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .testi-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); padding: 2.5rem; border-radius: 2.5rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+  .testi-card:hover { background: rgba(255,255,255,0.13); }
+  .testi-stars { display: flex; gap: 0.2rem; margin-bottom: 1.5rem; }
+  .testi-stars .material-symbols-outlined { color: #89d0ed; font-size: 1.1rem; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .testi-quote { font-size: 1rem; color: white; font-weight: 500; line-height: 1.75; font-style: italic; margin-bottom: 2rem; }
+  .testi-author { display: flex; align-items: center; gap: 1rem; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.2); flex-shrink: 0; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: white; font-size: 1rem; }
+  .testi-name { font-weight: 700; color: white; font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .testi-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.15rem; }
+
+  /* TICKER */
+  .ticker { background: var(--navy-dark); padding: 0.85rem 0; overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; animation: ticker 25s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .ticker-item { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0 2.5rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; }
+  .ticker-dot { width: 4px; height: 4px; background: var(--teal-mid); border-radius: 50%; }
+  .ticker-item strong { color: #89d0ed; }
+
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(10,20,50,0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal { background: white; border-radius: 24px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: 0 40px 80px rgba(10,20,50,0.3); transform: translateY(20px) scale(0.98); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+  .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+  .modal-header { padding: 1.75rem 2rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+  .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+  .modal-sub { color: var(--gray); font-size: 0.85rem; margin-top: 0.25rem; }
+  .modal-close { width: 36px; height: 36px; border-radius: 50%; background: var(--surface-low); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
+  .modal-close:hover { background: var(--surface-container); }
+  .modal-close .material-symbols-outlined { font-size: 1.1rem; color: var(--text-soft); }
+  .modal-body { padding: 1.5rem 2rem 2rem; }
+  .modal-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .modal-perk { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-soft); }
+  .modal-perk .material-symbols-outlined { color: var(--teal); font-size: 1rem; font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .modal-divider { height: 1px; background: var(--border); margin-bottom: 1.5rem; }
+  .form-iframe-wrap { border-radius: 12px; overflow: hidden; min-height: 880px; background: var(--surface-low); }
+  .form-iframe-wrap iframe { width: 100%; min-height: 880px; border: none; display: block; }
+
+  /* FOOTER */
+  footer { background: white; border-top: 1px solid var(--border); padding: 4rem 2rem 2rem; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 0.75rem; }
+  .footer-brand-desc { font-size: 0.875rem; color: var(--text-soft); line-height: 1.65; max-width: 280px; margin-bottom: 1.25rem; }
+  .footer-brand-copy { font-size: 0.8rem; color: var(--navy); font-weight: 500; }
+  .footer-col-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.875rem; color: var(--navy); margin-bottom: 1.25rem; }
+  .footer-col a { display: block; color: var(--text-soft); font-size: 0.875rem; text-decoration: none; margin-bottom: 0.75rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+  .footer-newsletter-desc { font-size: 0.875rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 1rem; }
+  .footer-newsletter-form { display: flex; }
+  .footer-newsletter-form input { flex: 1; background: var(--surface-low); border: 1px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; padding: 0.65rem 1rem; font-size: 0.875rem; font-family: 'Inter', sans-serif; outline: none; color: var(--text); }
+  .footer-newsletter-form input:focus { border-color: var(--navy); }
+  .footer-newsletter-form button { background: var(--navy); color: white; border: none; padding: 0 1rem; border-radius: 0 12px 12px 0; cursor: pointer; transition: background 0.2s; }
+  .footer-newsletter-form button:hover { background: var(--navy-dark); }
+  .footer-newsletter-form button .material-symbols-outlined { font-size: 1.1rem; display: block; padding: 0.2rem 0; }
+  .footer-bottom { max-width: 1280px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .footer-bottom p { font-size: 0.8rem; color: var(--gray); }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: all 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-image-card { transform: none; aspect-ratio: 16/9; }
+    .services-grid { grid-template-columns: repeat(2,1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .how-grid::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .modal-perks { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Bricks <span>&</span> Mortar</a>
+    <div class="nav-links">
+      <a href="#services" class="active">Services</a>
+      <a href="#how-it-works">How it Works</a>
+      <a href="#testimonials">Reviews</a>
+    </div>
+    <button class="nav-cta" onclick="openModal()">Book Now</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Trusted by 200+ QC Families</div>
+      <h1 class="hero-headline">
+        Come home to a<br><span class="accent">spotlessly clean</span><br>sanctuary.
+      </h1>
+      <p class="hero-sub">Beyond basic cleaning. Maria and her team restore your space to its most peaceful, fresh state — with meticulous attention to detail and genuine professional care.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal()">
+          Book Now
+          <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span>
+        </button>
+        <a href="#how-it-works" class="btn-secondary">How it Works</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Happy homes</div>
+        </div>
+        <div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Avg rating</div>
+        </div>
+        <div>
+          <div class="stat-num">Same day</div>
+          <div class="stat-label">SMS response</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-bg-blob"></div>
+      <div class="hero-image-card">
+        <img id="hero-image" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=85" alt="Professional house cleaning"/>
+      </div>
+      <div class="hero-image-badge">
+        <div class="hero-image-badge-icon">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">verified</span>
+        </div>
+        <div class="hero-image-badge-text">
+          <strong>Bonded & Insured</strong>
+          <span>Your peace of mind is our priority</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="material-symbols-outlined">eco</span> Eco-Friendly Supplies</div>
+    <div class="trust-item"><span class="material-symbols-outlined">stars</span> 5★ Google Rated</div>
+    <div class="trust-item"><span class="material-symbols-outlined">verified_user</span> Fully Insured Team</div>
+    <div class="trust-item"><span class="material-symbols-outlined">sentiment_very_satisfied</span> 100% Satisfaction Guarantee</div>
+    <div class="trust-item"><span class="material-symbols-outlined">sms</span> Same-Day SMS Confirmation</div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span> Trusted by <strong>200+ homes</strong></span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>Same-day SMS</strong> confirmation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Eco-friendly supplies</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>5★ rated</strong> in Quezon City</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Mon–Sat · 7AM–5PM</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>100% satisfaction</strong> guaranteed</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Bonded & fully insured team</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Trusted by <strong>200+ homes</strong></span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>Same-day SMS</strong> confirmation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Eco-friendly supplies</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>5★ rated</strong> in Quezon City</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Mon–Sat · 7AM–5PM</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> <strong>100% satisfaction</strong> guaranteed</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Bonded & fully insured team</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Specialized care for every square inch</h2>
+      <p class="section-sub">We don't just move dust — we restore your space to its cleanest, most peaceful state.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-img">
+          <img id="service-image-1" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Regular home cleaning"/>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-name">Regular Clean</div>
+          <p class="service-card-desc">Perfect for weekly or bi-weekly maintenance. Keep your home consistently fresh without lifting a finger.</p>
+          <a href="#" class="service-card-link" onclick="openModal(); return false;">Book this service <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-card-img">
+          <img id="service-image-2" src="https://images.unsplash.com/photo-1527515637462-cff94edd83df?w=600&q=80" alt="Deep clean service"/>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-name">Deep Clean</div>
+          <p class="service-card-desc">A thorough overhaul targeting hidden grime and dust. Recommended quarterly for a truly fresh home.</p>
+          <a href="#" class="service-card-link" onclick="openModal(); return false;">Book this service <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-card-img">
+          <img id="service-image-3" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Move in move out cleaning"/>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-name">Move-In / Out</div>
+          <p class="service-card-desc">Starting fresh or leaving a legacy. We deep-clean every hidden corner for a truly seamless transition.</p>
+          <a href="#" class="service-card-link" onclick="openModal(); return false;">Book this service <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:3rem;">
+      <h2 class="section-title">Book in minutes. We handle the rest.</h2>
+      <p class="section-sub">Three simple steps from inquiry to a spotless home.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-step-num">1</div>
+        <div class="how-step-title">Fill the form</div>
+        <p class="how-step-desc">Tell us your service type, property size, and preferred date. Takes 60 seconds. No spam, ever.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-1">
+        <div class="how-step-num">2</div>
+        <div class="how-step-title">Get confirmed</div>
+        <p class="how-step-desc">Maria reaches out within the hour via SMS to confirm your slot and send your free quote.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-2">
+        <div class="how-step-num">3</div>
+        <div class="how-step-title">Come home clean</div>
+        <p class="how-step-desc">Our team arrives on time, fully equipped. You come home to a spotless, fresh-smelling space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <h2>Voices of our clients</h2>
+      <p>Real reviews from real Quezon City families.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+        </div>
+        <p class="testi-quote" id="testi-quote-1">"Maria's team transformed our condo after renovation. The post-construction dust was everywhere and they handled it perfectly. Coming home felt like checking into a 5-star hotel."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name" id="testi-name-1">Ana Reyes</div>
+            <div class="testi-role" id="testi-role-1">Quezon City</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+        </div>
+        <p class="testi-quote" id="testi-quote-2">"I've tried 3 cleaning services before and none were as thorough and professional. The SMS updates are a game changer — I always know what's happening."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name" id="testi-name-2">Rico Santos</div>
+            <div class="testi-role" id="testi-role-2">Cubao, QC</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+        </div>
+        <p class="testi-quote" id="testi-quote-3">"Booked a deep clean before my in-laws visited. They couldn't believe how spotless the house was. Bricks & Mortar has become an essential part of our family's routine."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name" id="testi-name-3">Michelle Tan</div>
+            <div class="testi-role" id="testi-role-3">Diliman, QC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Bricks & Mortar Cleaning Co.</div>
+      <p class="footer-brand-desc">Restoring clarity and freshness to your home through meticulous professional cleaning and genuine care.</p>
+      <div class="footer-brand-copy">© 2026 Bricks & Mortar. Bonded & Insured.</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <a href="#" onclick="openModal(); return false;">Regular Clean</a>
+      <a href="#" onclick="openModal(); return false;">Deep Clean</a>
+      <a href="#" onclick="openModal(); return false;">Move-In / Out</a>
+      <a href="#" onclick="openModal(); return false;">Post-Construction</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <a href="#how-it-works">How it Works</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact Us</div>
+      <p class="footer-newsletter-desc"><span id="contact-address">Quezon City, Metro Manila</span><br><span id="contact-hours">Mon–Sat · 7AM–5PM</span><br><span id="contact-phone">0917 XXX XXXX</span></p>
+      <div class="footer-col-title" style="margin-top:1rem;">Stay in the loop</div>
+      <div class="footer-newsletter-form">
+        <input type="email" placeholder="Email address"/>
+        <button type="button"><span class="material-symbols-outlined">send</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Built with care for Quezon City families.</p>
+    <p>Bricks & Mortar Cleaning Co. · All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Get your free quote</div>
+        <div class="modal-sub">Takes 60 seconds · No spam, ever.</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-perks">
+        <div class="modal-perk"><span class="material-symbols-outlined">check_circle</span> Free quote, no commitment</div>
+        <div class="modal-perk"><span class="material-symbols-outlined">sms</span> SMS confirmed within the hour</div>
+        <div class="modal-perk"><span class="material-symbols-outlined">schedule</span> Mon–Sat, 7AM–5PM</div>
+        <div class="modal-perk"><span class="material-symbols-outlined">verified_user</span> 100% satisfaction guarantee</div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="form-iframe-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/Bgsw14OEdDWtp4GwWIAA"
+          id="inline-Bgsw14OEdDWtp4GwWIAA"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Bricks & Mortar — Lead Form"
+          data-height="908"
+          data-layout-iframe-id="inline-Bgsw14OEdDWtp4GwWIAA"
+          data-form-id="Bgsw14OEdDWtp4GwWIAA"
+          title="Bricks & Mortar — Lead Form"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script>
+  // Load CMS data and update page content
+  async function loadCMSData() {
+    try {
+      const [hero, services, testimonials, contact] = await Promise.all([
+        fetch('/_data/hero.json').then(r => r.json()).catch(() => null),
+        fetch('/_data/services.json').then(r => r.json()).catch(() => null),
+        fetch('/_data/testimonials.json').then(r => r.json()).catch(() => null),
+        fetch('/_data/contact.json').then(r => r.json()).catch(() => null)
+      ]);
+
+      if (hero?.hero_image) document.getElementById('hero-image').src = hero.hero_image;
+
+      if (services) {
+        if (services.service_image_1) document.getElementById('service-image-1').src = services.service_image_1;
+        if (services.service_image_2) document.getElementById('service-image-2').src = services.service_image_2;
+        if (services.service_image_3) document.getElementById('service-image-3').src = services.service_image_3;
+      }
+
+      if (testimonials) {
+        if (testimonials.testi_1) {
+          document.getElementById('testi-quote-1').textContent = '"' + testimonials.testi_1.quote + '"';
+          document.getElementById('testi-name-1').textContent = testimonials.testi_1.name;
+          document.getElementById('testi-role-1').textContent = testimonials.testi_1.location;
+        }
+        if (testimonials.testi_2) {
+          document.getElementById('testi-quote-2').textContent = '"' + testimonials.testi_2.quote + '"';
+          document.getElementById('testi-name-2').textContent = testimonials.testi_2.name;
+          document.getElementById('testi-role-2').textContent = testimonials.testi_2.location;
+        }
+        if (testimonials.testi_3) {
+          document.getElementById('testi-quote-3').textContent = '"' + testimonials.testi_3.quote + '"';
+          document.getElementById('testi-name-3').textContent = testimonials.testi_3.name;
+          document.getElementById('testi-role-3').textContent = testimonials.testi_3.location;
+        }
+      }
+
+      if (contact) {
+        if (contact.phone) document.getElementById('contact-phone').textContent = contact.phone;
+        if (contact.hours) document.getElementById('contact-hours').textContent = contact.hours;
+        if (contact.address) document.getElementById('contact-address').textContent = contact.address;
+      }
+    } catch(e) {
+      console.log('CMS data not available, using defaults.');
+    }
+  }
+  loadCMSData();
+</script>
+<script>
+  // Modal
+  function openModal() {
+    document.getElementById('bookingModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('bookingModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('bookingModal')) closeModal();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active link on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(27,62,131,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>
