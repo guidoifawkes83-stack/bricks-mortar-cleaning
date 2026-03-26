@@ -211,6 +211,7 @@
     .modal-perks { grid-template-columns: 1fr; }
   }
 </style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -521,7 +522,16 @@
 
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 <script>
-  // Load CMS data and update page content
+  // Netlify Identity redirect handler
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
   async function loadCMSData() {
     try {
       const [hero, services, testimonials, contact] = await Promise.all([
