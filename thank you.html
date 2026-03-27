@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You | Bricks & Mortar Cleaning Co.</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #1b3e83;
+    --navy-dark: #0f2552;
+    --teal: #0c6780;
+    --teal-light: #e0f4f8;
+    --teal-mid: #9ae1ff;
+    --surface: #f7f9fb;
+    --surface-low: #f2f4f6;
+    --white: #ffffff;
+    --text: #191c1e;
+    --text-soft: #424752;
+    --border: #e0e3e5;
+    --gray: #727784;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+  h1,h2,h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* NAV */
+  nav {
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; text-decoration: none; }
+  .nav-logo span { color: var(--teal); }
+
+  /* MAIN */
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
+
+  .card {
+    background: white;
+    border-radius: 2.5rem;
+    padding: 4rem 3rem;
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(27,62,131,0.1);
+    border: 1px solid var(--border);
+    animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .check-wrap {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 2rem;
+    animation: popIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .check-wrap .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: var(--teal);
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .badge {
+    display: inline-block; padding: 0.4rem 1rem;
+    border-radius: 100px; background: var(--teal-light);
+    color: var(--teal); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800; color: var(--navy);
+    letter-spacing: -0.025em; margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .sub {
+    color: var(--text-soft); font-size: 1rem;
+    line-height: 1.75; margin-bottom: 2.5rem;
+  }
+
+  /* What happens next */
+  .next-steps {
+    background: var(--surface);
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+  .next-steps-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--gray); margin-bottom: 1.25rem;
+  }
+  .next-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .next-step:last-child { margin-bottom: 0; }
+  .next-step-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .next-step-icon .material-symbols-outlined {
+    font-size: 1rem; color: var(--teal);
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .next-step-text strong {
+    display: block; font-weight: 700; font-size: 0.875rem;
+    color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-bottom: 0.15rem;
+  }
+  .next-step-text span {
+    font-size: 0.8rem; color: var(--text-soft);
+  }
+
+  .btn-home {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem; background: var(--navy); color: white;
+    border-radius: 100px; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.25s;
+  }
+  .btn-home:hover { background: var(--navy-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(27,62,131,0.25); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem; color: var(--gray);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 2.5rem 1.5rem; border-radius: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Bricks <span>&</span> Mortar</a>
+  </div>
+</nav>
+
+<main>
+  <div class="card">
+    <div class="check-wrap">
+      <span class="material-symbols-outlined">check_circle</span>
+    </div>
+
+    <div class="badge">Request Received</div>
+
+    <h1>You're all set,<br>we'll be in touch soon!</h1>
+
+    <p class="sub">
+      Thanks for reaching out to Bricks & Mortar. Maria will personally review your request and send you an SMS confirmation within the hour.
+    </p>
+
+    <div class="next-steps">
+      <div class="next-steps-title">What happens next</div>
+      <div class="next-step">
+        <div class="next-step-icon">
+          <span class="material-symbols-outlined">sms</span>
+        </div>
+        <div class="next-step-text">
+          <strong>SMS confirmation within the hour</strong>
+          <span>Maria will reach out to confirm your slot and send your free quote.</span>
+        </div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-icon">
+          <span class="material-symbols-outlined">event_available</span>
+        </div>
+        <div class="next-step-text">
+          <strong>Schedule locked in</strong>
+          <span>Once confirmed, your cleaning date is secured. Mon–Sat, 7AM–5PM.</span>
+        </div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-icon">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <div class="next-step-text">
+          <strong>Come home clean</strong>
+          <span>Our team arrives fully equipped. You come home to a spotless space.</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-home">
+      <span class="material-symbols-outlined" style="font-size:1rem;">arrow_back</span>
+      Back to homepage
+    </a>
+  </div>
+</main>
+
+<footer>
+  © 2026 Bricks & Mortar Cleaning Co. · Quezon City · Bonded & Insured
+</footer>
+
+</body>
+</html>
