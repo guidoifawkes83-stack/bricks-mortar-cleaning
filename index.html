@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <style>
   :root {
     --navy: #1b3e83;
@@ -541,63 +541,7 @@
 </div>
 
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-<script>
-  // Netlify Identity redirect handler
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-  async function loadCMSData() {
-    try {
-      const [hero, services, testimonials, contact] = await Promise.all([
-        fetch('/_data/hero.json').then(r => r.json()).catch(() => null),
-        fetch('/_data/services.json').then(r => r.json()).catch(() => null),
-        fetch('/_data/testimonials.json').then(r => r.json()).catch(() => null),
-        fetch('/_data/contact.json').then(r => r.json()).catch(() => null)
-      ]);
 
-      if (hero?.hero_image) document.getElementById('hero-image').src = hero.hero_image;
-
-      if (services) {
-        if (services.service_image_1) document.getElementById('service-image-1').src = services.service_image_1;
-        if (services.service_image_2) document.getElementById('service-image-2').src = services.service_image_2;
-        if (services.service_image_3) document.getElementById('service-image-3').src = services.service_image_3;
-      }
-
-      if (testimonials) {
-        if (testimonials.testi_1) {
-          document.getElementById('testi-quote-1').textContent = '"' + testimonials.testi_1.quote + '"';
-          document.getElementById('testi-name-1').textContent = testimonials.testi_1.name;
-          document.getElementById('testi-role-1').textContent = testimonials.testi_1.location;
-        }
-        if (testimonials.testi_2) {
-          document.getElementById('testi-quote-2').textContent = '"' + testimonials.testi_2.quote + '"';
-          document.getElementById('testi-name-2').textContent = testimonials.testi_2.name;
-          document.getElementById('testi-role-2').textContent = testimonials.testi_2.location;
-        }
-        if (testimonials.testi_3) {
-          document.getElementById('testi-quote-3').textContent = '"' + testimonials.testi_3.quote + '"';
-          document.getElementById('testi-name-3').textContent = testimonials.testi_3.name;
-          document.getElementById('testi-role-3').textContent = testimonials.testi_3.location;
-        }
-      }
-
-      if (contact) {
-        if (contact.phone) document.getElementById('contact-phone').textContent = contact.phone;
-        if (contact.hours) document.getElementById('contact-hours').textContent = contact.hours;
-        if (contact.address) document.getElementById('contact-address').textContent = contact.address;
-      }
-    } catch(e) {
-      console.log('CMS data not available, using defaults.');
-    }
-  }
-  loadCMSData();
-</script>
 <script>
   // Modal
   function openModal() {
