@@ -231,6 +231,30 @@
     .footer-inner { grid-template-columns: 1fr; }
     .modal-perks { grid-template-columns: 1fr; }
   }
+
+.glint {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.glint::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: glint 3.5s ease-in-out infinite;
+}
+@keyframes glint {
+  0%   { left: -75%; opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { left: 125%; opacity: 1; }
+  51%  { opacity: 0; }
+  100% { left: 125%; opacity: 0; }
+}
+
+
 </style>
 </head>
 <body>
@@ -254,7 +278,7 @@
     <div class="hero-left">
       <div class="hero-badge">Trusted by 200+ QC Families</div>
       <h1 class="hero-headline">
-        Come home to a<br><span class="accent">spotlessly clean</span><br>sanctuary.
+        Come home to a<br><span class="accent glint">spotlessly clean</span><br>sanctuary.
       </h1>
       <p class="hero-sub">Beyond basic cleaning. Maria and her team restore your space to its most peaceful, fresh state — with meticulous attention to detail and genuine professional care.</p>
       <div class="hero-actions">
